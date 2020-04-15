@@ -6,9 +6,21 @@ const apiKey = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?
 
 router.get('/', (req, res) => {
   request.get(apiKey)
-  .then(apiRes => {
-    console.log(apiRes.body.photos[0].id)
-  })
+    .then(apiRes => {
+      let viewData = {}
+      apiRes.body.photos.map(photo => {
+        const { id, sol, img_src, earth_date, rover } = photo
+        const data = {
+          id: id,
+          sol: sol,
+          imgSrc: img_src,
+          earthDate: earth_date,
+          roverName: rover.name
+        }
+        viewData.data = data
+        console.log(viewData)
+      })
+    })
 })
 
 module.exports = router
