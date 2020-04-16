@@ -1,7 +1,7 @@
 import React from 'react'
 import request from 'superagent'
 
-const apiUrl = 'http://localhost:3000/api/v1/mars'
+const apiUrl = '/api/v1/mars'
 
 const imgStyle = {
   width: '400px',
