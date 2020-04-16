@@ -9,7 +9,10 @@ const imgStyle = {
   marginBottom: '20px'
 }
 
-let viewData = {}
+let viewData = {
+  sol: 1000,
+  camera: 'RHAZ'
+}
 
 console.log("outside");
 
@@ -80,7 +83,7 @@ class MarsPics extends React.Component {
               <label>
             Pick a camera:
                 <select name='camera' value={this.state.camera} onChange={this.handleCameraChange}>
-                  <option value='all'>All</option>
+                  {/* <option value='all'>All</option> */}
                   <option value='FHAZ'>Front Hazard Avoidance Camera</option>
                   <option value="RHAZ">Rear Hazard Avoidance Camera</option>
                   <option value="MAST">Mast Camera</option>
