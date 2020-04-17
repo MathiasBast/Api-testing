@@ -23,7 +23,8 @@ class MarsPics extends React.Component {
       sol: 1000,
       camera: 'FHAZ',
       load: false,
-      pics: ''
+      pics: '',
+      state: 'loading...'
     }
   }
 
@@ -32,9 +33,20 @@ class MarsPics extends React.Component {
     request.get(apiUrl + '/' + sol + '/' + camera)
       .then(res => {
         this.setState({
-          pics: res.body.pics,
-          load: true
+          pics: res.body.pics
         })
+      })
+      .then(() => {
+        if (this.state.pics.length === 0) {
+          this.setState({
+            state: 'No images found',
+            load: false
+          })
+        } else {
+          this.setState({
+            load: true
+          })
+        }
       })
   }
 
@@ -111,7 +123,7 @@ class MarsPics extends React.Component {
               }
             </div>
 
-            : <div>Loading...</div>
+            : <div>{this.state.state}</div>
           }
         </div>
       </>
