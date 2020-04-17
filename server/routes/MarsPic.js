@@ -7,7 +7,6 @@ const apiKey = '60Db4uxfwdIj8Jjsp5gM3q1cUy9PVFmTfYH2uRmD'
 // https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=5&camera=FHAZ&api_key=60Db4uxfwdIj8Jjsp5gM3q1cUy9PVFmTfYH2uRmD
 router.get('/:sol/:camera', (req, res) => {
   const { sol, camera } = req.params
-  console.log({ sol: sol })
   request.get(api)
     .query({ sol: sol })
     .query({ camera: camera })
@@ -23,7 +22,8 @@ router.get('/:sol/:camera', (req, res) => {
           sol: sol,
           imgSrc: img_src,
           earthDate: earth_date,
-          roverName: rover.name
+          roverName: rover.name,
+          maxSol: rover.max_sol
         }
         viewData.pics.push(data)
       })

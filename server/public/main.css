@@ -1,0 +1,24 @@
+body {
+  background-color: ghostwhite;
+  font-family: 'Roboto', sans-serif;
+}
+
+.div-class {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto 0 auto;
+}
+
+.pics-class {
+  border: 3px solid black;
+  padding: 10px;
+  margin: 10px 50px 10px 50px;
+  border-radius: 5px;
+  background-color: silver;
+}
+
+form {
+  width: 400px;
+  margin: 0 auto 0 auto;
+  text-align: left;
+}

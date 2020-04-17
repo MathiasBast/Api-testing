@@ -4,18 +4,16 @@ import request from 'superagent'
 const apiUrl = '/api/v1/mars'
 
 const imgStyle = {
-  width: '400px',
+  width: '100%',
+  height: 'auto',
   marginTop: '20px',
   marginBottom: '20px'
 }
 
 let viewData = {
   sol: 1000,
-  camera: 'RHAZ'
+  camera: 'FHAZ'
 }
-
-console.log("outside");
-
 
 class MarsPics extends React.Component {
   constructor (props) {
@@ -23,33 +21,28 @@ class MarsPics extends React.Component {
 
     this.state = {
       sol: 1000,
-      camera: "RHAZ",
+      camera: 'FHAZ',
       load: false,
       pics: ''
     }
   }
 
   loader () {
-    console.log(viewData)
     var { sol, camera } = viewData
     request.get(apiUrl + '/' + sol + '/' + camera)
-    .then(res => {
-      this.setState({
-        pics: res.body.pics,
-        load: true
+      .then(res => {
+        this.setState({
+          pics: res.body.pics,
+          load: true
+        })
       })
-      // this.setState({
-      //   sol: this.state.pics[0].sol
-      // })
-      console.log(res.body)
-    })
   }
 
   componentDidMount () {
     this.loader()
   }
 
-  handleCameraChange = event => {  
+  handleCameraChange = event => {
     this.setState({
       camera: event.target.value
     })
@@ -77,45 +70,50 @@ class MarsPics extends React.Component {
   render () {
     return (
       <>
-        {this.state.load
-          ? <div>
-            <form>
-              <label>
-            Pick a camera:
-                <select name='camera' value={this.state.camera} onChange={this.handleCameraChange}>
-                  {/* <option value='all'>All</option> */}
-                  <option value='FHAZ'>Front Hazard Avoidance Camera</option>
-                  <option value="RHAZ">Rear Hazard Avoidance Camera</option>
-                  <option value="MAST">Mast Camera</option>
-                  <option value="CHEMCAM">Chemistry and Camera Complex</option>
-                  <option value="MAHLI">Mars Hand Lens Imager</option>
-                  <option value="MARDI">Mars Descent Imager</option>
-                  <option value="NAVCAM">Navigation Camera</option>
-                </select>
-              </label>
-              <label>Sol</label><input min={0} name='sol' type='number' 
-              value={this.state.sol} 
-              onChange={this.handleSolChange} 
-              placeholder={0} 
-              />
-              <input type="submit" value="Submit" onClick={this.handleSubmit} />
-            </form>
+        <div className='div-class'>
+          <h1>Mars Rover Pix</h1>
+          <form>
+            <label>
+            Pick a camera
+              <select name='camera' value={this.state.camera} onChange={this.handleCameraChange}>
+                <option value='FHAZ'>Front Hazard Avoidance Camera</option>
+                <option value="RHAZ">Rear Hazard Avoidance Camera</option>
+                <option value="MAST">Mast Camera</option>
+                <option value="CHEMCAM">Chemistry and Camera Complex</option>
+                <option value="MAHLI">Mars Hand Lens Imager</option>
+                <option value="MARDI">Mars Descent Imager</option>
+                <option value="NAVCAM">Navigation Camera</option>
+              </select>
+            </label>
+            <br></br>
+            <br></br>
+            <label>Sol </label><input min={0} name='sol' type='number'
+              value={this.state.sol}
+              onChange={this.handleSolChange}
+              placeholder={0}
+            />
+            <input type="submit" value="Submit" onClick={this.handleSubmit} />
+          </form>
 
-            {this.state.pics.map(pic => {
-              return (
-                <div key={pic.id}>
-                  <img src={pic.imgSrc} style={imgStyle} />
-                  <div>Rover Name: {pic.roverName}</div>
-                  <div>Sol: {pic.sol}</div>
-                  <div>Earth Date: {pic.earthDate}</div>
-                </div>
-              )
-            })
-            }
-          </div>
+          {this.state.load
+            ? <div>
+              <p>Max Sol is: {this.state.pics[0].maxSol}</p>
+              {this.state.pics.map(pic => {
+                return (
+                  <div key={pic.id} className='pics-class' >
+                    <img src={pic.imgSrc} style={imgStyle} />
+                    <div>Rover Name: {pic.roverName}</div>
+                    <div>Sol: {pic.sol}</div>
+                    <div>Earth Date: {pic.earthDate}</div>
+                  </div>
+                )
+              })
+              }
+            </div>
 
-          : <div>Loading...</div>
-        }
+            : <div>Loading...</div>
+          }
+        </div>
       </>
     )
   }
