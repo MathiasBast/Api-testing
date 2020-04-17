@@ -44,6 +44,7 @@ class MarsPics extends React.Component {
           })
         } else {
           this.setState({
+            state: 'loading...',
             load: true
           })
         }
