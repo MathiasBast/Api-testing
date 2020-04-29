@@ -20,5 +20,13 @@ body {
 form {
   width: 400px;
   margin: 0 auto 0 auto;
-  text-align: left;
+  text-align: center;
+}
+
+.form-contents {
+  margin: 3px;
+}
+
+.change-rover {
+  margin-bottom: 8px;
 }
