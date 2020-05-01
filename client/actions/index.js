@@ -4,7 +4,7 @@ export const GET_PICS_SUCCESS = 'GET_PICS_SUCCESS'
 export const GET_PICS_AWAIT = 'GET_PICS_AWAIT'
 export const GET_PICS_ERROR = 'GET_PICS_ERROR'
 export const CLEAR_PICS_ERROR = 'CLEAR_PICS_ERROR'
-export const apiUrl = 'http://localhost:3000/api/v1/mars'
+export const apiUrl = '/api/v1/mars'
 
 export function picsAwait () {
   return {
