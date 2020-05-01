@@ -18,12 +18,11 @@ class MarsPics extends React.Component {
       <>
         <div className='div-class'>
           <h1>Mars Rover Pix</h1>
-          
-
+          {console.log('pics', this.props.pics)}
           {this.props.load
             ? <div>
-              <p>Max Sol is: {this.state.pics[0].maxSol}</p>
-              {this.state.pics.map(pic => {
+              <p>Max Sol is: {this.props.pics[0].maxSol}</p>
+              {this.props.pics.map(pic => {
                 return (
                   <div key={pic.id} className='pics-class' >
                     <img src={pic.imgSrc} style={imgStyle} />
@@ -36,7 +35,7 @@ class MarsPics extends React.Component {
               }
             </div>
 
-            : <div>{this.state.state}</div>
+            : <div>{this.props.myState}</div>
           }
         </div>
       </>

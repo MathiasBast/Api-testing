@@ -5,9 +5,9 @@ const request = require('superagent')
 const api = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?'
 const apiKey = '60Db4uxfwdIj8Jjsp5gM3q1cUy9PVFmTfYH2uRmD'
 // https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=5&camera=FHAZ&api_key=60Db4uxfwdIj8Jjsp5gM3q1cUy9PVFmTfYH2uRmD
-router.get('/:sol/:camera', (req, res) => {
+router.get('/:sol/:camera/:rover', (req, res) => {
   const { sol, camera } = req.params
-  if(camera !== 'ALL'){
+  if (camera !== 'ALL') {
     request.get(api)
       .query({ sol: sol })
       .query({ camera: camera })
@@ -31,7 +31,7 @@ router.get('/:sol/:camera', (req, res) => {
         res.json(viewData)
       })
   }
-  if(camera === 'ALL') {
+  if (camera === 'ALL') {
     request.get(api)
       .query({ sol: sol })
       .query({ api_key: apiKey })
@@ -55,7 +55,5 @@ router.get('/:sol/:camera', (req, res) => {
       })
   }
 })
-
-// 
 
 module.exports = router
