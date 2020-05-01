@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { getPics } from '../actions'
 
 let viewData = {
   sol: 1000,
@@ -12,7 +14,7 @@ class Form extends React.Component {
     this.state = {
       sol: 1000,
       camera: 'FHAZ',
-      rover: ''
+      rover: 'Curiosity'
     }
   }
   handleCameraChange = event => {
@@ -27,25 +29,20 @@ class Form extends React.Component {
     })
   }
 
-  handleSubmit = event => {
-    event.preventDefault()
-    const { sol, camera } = this.state
-    viewData = {
-      sol: sol,
-      camera: camera
-    }
-    this.props.setLoadFalse()
-    this.props.loader(viewData)
-  }
-
   handleRoverChange = event => {
     this.setState({
       rover: event.target.value
     })
   }
 
-  handleRoverClick = event => {
-
+  handleSubmit = event => {
+    event.preventDefault()
+    const { sol, camera, rover } = this.state
+    viewData = {
+      sol: sol,
+      camera: camera
+    }
+    this.props.dispatch(getPics(sol, camera, rover))
   }
 
   render () {
@@ -88,4 +85,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form
+export default connect()(Form)

@@ -1,6 +1,5 @@
 import React from 'react'
-
-
+import { connect } from 'react-redux'
 
 const imgStyle = {
   width: '100%',
@@ -9,20 +8,19 @@ const imgStyle = {
   marginBottom: '20px'
 }
 
-
-
 class MarsPics extends React.Component {
-
   render () {
     return (
       <>
         <div className='div-class'>
           <h1>Mars Rover Pix</h1>
-          {console.log('pics', this.props.pics)}
-          {this.props.load
+          {!this.props.errors.error
+            ? <>
+          {!this.props.pending
             ? <div>
-              <p>Max Sol is: {this.props.pics[0].maxSol}</p>
-              {this.props.pics.map(pic => {
+              {console.log(this.props)}
+              <p>Max Sol is: {this.props.pics.pics[0].maxSol}</p>
+              {this.props.pics.pics.map(pic => {
                 return (
                   <div key={pic.id} className='pics-class' >
                     <img src={pic.imgSrc} style={imgStyle} />
@@ -35,7 +33,10 @@ class MarsPics extends React.Component {
               }
             </div>
 
-            : <div>{this.props.myState}</div>
+            : <div><p>Loading...</p></div>
+          }
+          </>
+            : <div><p>No pictures found</p></div>
           }
         </div>
       </>
@@ -43,4 +44,9 @@ class MarsPics extends React.Component {
   }
 }
 
-export default MarsPics
+const mapStateToProps = state => {
+  console.log(state)
+  return state
+}
+
+export default connect(mapStateToProps)(MarsPics)

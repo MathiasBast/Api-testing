@@ -1,9 +1,9 @@
 import React from 'react'
 import request from 'superagent'
-
-const apiUrl = '/api/v1/mars'
 import MarsPics from './MarsPics'
 import Form from './Form'
+
+const apiUrl = '/api/v1/mars'
 
 let viewData = {
   sol: 1000,
@@ -24,8 +24,22 @@ class App extends React.Component {
     }
   }
 
+  render () {
+    return (
+      <>
+        <Form />
+        <MarsPics />
+      </>
+    )
+  }
+}
+
+export default App
+
+{ /*
+
   loader (data) {
-    if(data === undefined){
+    if (data === undefined) {
       var { sol, camera } = viewData
     } else {
       var { sol, camera } = data
@@ -51,35 +65,4 @@ class App extends React.Component {
         }
       })
   }
-
-  componentDidMount () {
-    this.loader()
-  }
-
-  setLoadFalse = event => {
-    this.setState({
-      load: false
-    })
-  }
-
-  render() {
-    return (
-      <>
-        {console.log(this.state.pics)}
-        <Form load={this.state.load} myState={this.state.myState} setLoadFalse={(setLoadFalse) => this.setLoadFalse} loader={() => this.loader()} />
-        <MarsPics load={this.state.load} myState={this.state.myState} pics={this.state.pics} />
-      </>
-    )
-  }
-}
-
-export default App
-
-{/*
-  sol: 1000,
-      camera: 'FHAZ',
-      load: false,
-      pics: '',
-      state: 'loading...',
-      rover: ''
-        */}
+*/ }
