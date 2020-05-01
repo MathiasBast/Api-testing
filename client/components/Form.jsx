@@ -49,18 +49,21 @@ class Form extends React.Component {
     return (
       <div>
         <form className='change-rover'>
-          <label>You are viewing Curiosity</label>&nbsp;
+          <label>Pick a Rover</label>
+          &nbsp;
           <select name='rover' value={this.state.rover} onChange={this.handleRoverChange} >
             <option value="Curiosity">Curiosity</option>
             <option value="Spirit">Spirit</option>
             <option value='Opportunity'>Opportunity</option>
           </select>
-          <button type='submit' onClick={this.handleRoverClick} >Change</button>
         </form>
         <form>
-          <label>
-            Pick a camera
-            <select className='form-contents' name='camera' value={this.state.camera} onChange={this.handleCameraChange}>
+          <div>
+            <label>Pick a Camera</label>
+          </div>
+          &nbsp;
+          <select className='form-contents' name='camera' value={this.state.camera} onChange={this.handleCameraChange}>
+            {this.state.rover === 'Curiosity' && <>
               <option value='FHAZ'>Front Hazard Avoidance Camera</option>
               <option value="RHAZ">Rear Hazard Avoidance Camera</option>
               <option value="MAST">Mast Camera</option>
@@ -68,9 +71,24 @@ class Form extends React.Component {
               <option value="MAHLI">Mars Hand Lens Imager</option>
               <option value="MARDI">Mars Descent Imager</option>
               <option value="NAVCAM">Navigation Camera</option>
-              <option value="ALL">All cameras</option>
-            </select>
-          </label>
+              </>}
+            {this.state.rover === 'Opportunity' && <>
+              <option value='FHAZ'>Front Hazard Avoidance Camera</option>
+              <option value="RHAZ">Rear Hazard Avoidance Camera</option>
+              <option value="NAVCAM">Navigation Camera</option>
+              <option value="PANCAM">Panoramic Camera</option>
+              <option value="MINITES">Miniature Thermal Emission Spectrometer (Mini-TES)</option>
+              </>}
+            {this.state.rover === 'Spirit' && <>
+              <option value='FHAZ'>Front Hazard Avoidance Camera</option>
+              <option value="RHAZ">Rear Hazard Avoidance Camera</option>
+              <option value="NAVCAM">Navigation Camera</option>
+              <option value="PANCAM">Panoramic Camera</option>
+              <option value="MINITES">Miniature Thermal Emission Spectrometer (Mini-TES)</option>
+              </>}
+            <option value="ALL">All cameras</option>
+          </select>
+
           <br></br>
           <label className='form-contents'>Sol </label><input min={0} name='sol' type='number'
             value={this.state.sol}

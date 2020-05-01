@@ -14,27 +14,33 @@ class MarsPics extends React.Component {
       <>
         <div className='div-class'>
           <h1>Mars Rover Pix</h1>
+
+          {this.props.errors.message === 'not run' && <p>Select one and submit</p>}
           {!this.props.errors.error
             ? <>
-          {!this.props.pending
-            ? <div>
-              {console.log(this.props)}
-              <p>Max Sol is: {this.props.pics.pics[0].maxSol}</p>
-              {this.props.pics.pics.map(pic => {
-                return (
-                  <div key={pic.id} className='pics-class' >
-                    <img src={pic.imgSrc} style={imgStyle} />
-                    <div>Rover Name: {pic.roverName}</div>
-                    <div>Sol: {pic.sol}</div>
-                    <div>Earth Date: {pic.earthDate}</div>
-                  </div>
-                )
-              })
-              }
-            </div>
+            {!this.props.pending
+              ? <div>
+                <p>Max Sol is: {this.props.pics.pics[0].maxSol}</p>
+                {this.props.pics.pics.map(pic => {
+                  return (
+                    <div key={pic.id} className='pics-class' >
+                      <img src={pic.imgSrc} style={imgStyle} />
+                      <div>Rover Name: {pic.roverName}</div>
+                      <div>Sol: {pic.sol}</div>
+                      <div>Earth Date: {pic.earthDate}</div>
+                      <div>Camera: {pic.name} </div>
+                    </div>
+                  )
+                })
+                }
+              </div>
+              
+              : <>
+              {this.props.errors.message !== 'not run' &&
+              <div><p>Loading...</p></div>}
 
-            : <div><p>Loading...</p></div>
-          }
+              </>
+            }
           </>
             : <div><p>No pictures found</p></div>
           }
@@ -45,7 +51,6 @@ class MarsPics extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return state
 }
 

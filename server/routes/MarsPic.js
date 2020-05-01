@@ -20,14 +20,15 @@ router.get('/:sol/:camera/:rover', (req, res) => {
             pics: []
           }
           apiRes.body.photos.map((photo, i) => {
-            const { id, sol, img_src, earth_date, rover } = photo
+            const { id, sol, img_src, earth_date, rover, camera } = photo
             const data = {
               id: id,
               sol: sol,
               imgSrc: img_src,
               earthDate: earth_date,
               roverName: rover.name,
-              maxSol: rover.max_sol
+              maxSol: rover.max_sol,
+              name: camera.full_name
             }
             viewData.pics.push(data)
           })
@@ -43,14 +44,15 @@ router.get('/:sol/:camera/:rover', (req, res) => {
             pics: []
           }
           apiRes.body.photos.map((photo, i) => {
-            const { id, sol, img_src, earth_date, rover } = photo
+            const { id, sol, img_src, earth_date, rover, camera } = photo
             const data = {
               id: id,
               sol: sol,
               imgSrc: img_src,
               earthDate: earth_date,
               roverName: rover.name,
-              maxSol: rover.max_sol
+              maxSol: rover.max_sol,
+              name: camera.full_name
             }
             viewData.pics.push(data)
           })
@@ -68,14 +70,15 @@ router.get('/:sol/:camera/:rover', (req, res) => {
             pics: []
           }
           apiRes.body.photos.map((photo, i) => {
-            const { id, sol, img_src, earth_date, rover } = photo
+            const { id, sol, img_src, earth_date, rover, camera } = photo
             const data = {
               id: id,
               sol: sol,
               imgSrc: img_src,
               earthDate: earth_date,
               roverName: rover.name,
-              maxSol: rover.max_sol
+              maxSol: rover.max_sol,
+              name: camera.full_name
             }
             viewData.pics.push(data)
           })
@@ -91,14 +94,15 @@ router.get('/:sol/:camera/:rover', (req, res) => {
             pics: []
           }
           apiRes.body.photos.map((photo, i) => {
-            const { id, sol, img_src, earth_date, rover } = photo
+            const { id, sol, img_src, earth_date, rover, camera } = photo
             const data = {
               id: id,
               sol: sol,
               imgSrc: img_src,
               earthDate: earth_date,
               roverName: rover.name,
-              maxSol: rover.max_sol
+              maxSol: rover.max_sol,
+              name: camera.full_name
             }
             viewData.pics.push(data)
           })
@@ -116,14 +120,15 @@ router.get('/:sol/:camera/:rover', (req, res) => {
             pics: []
           }
           apiRes.body.photos.map((photo, i) => {
-            const { id, sol, img_src, earth_date, rover } = photo
+            const { id, sol, img_src, earth_date, rover, camera } = photo
             const data = {
               id: id,
               sol: sol,
               imgSrc: img_src,
               earthDate: earth_date,
               roverName: rover.name,
-              maxSol: rover.max_sol
+              maxSol: rover.max_sol,
+              name: camera.full_name
             }
             viewData.pics.push(data)
           })
@@ -139,14 +144,15 @@ router.get('/:sol/:camera/:rover', (req, res) => {
             pics: []
           }
           apiRes.body.photos.map((photo, i) => {
-            const { id, sol, img_src, earth_date, rover } = photo
+            const { id, sol, img_src, earth_date, rover, camera } = photo
             const data = {
               id: id,
               sol: sol,
               imgSrc: img_src,
               earthDate: earth_date,
               roverName: rover.name,
-              maxSol: rover.max_sol
+              maxSol: rover.max_sol,
+              name: camera.full_name
             }
             viewData.pics.push(data)
           })

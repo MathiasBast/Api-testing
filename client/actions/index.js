@@ -39,7 +39,6 @@ export function getPics (sol, camera, rover) {
 
     return request.get(apiUrl + '/' + sol + '/' + camera + '/' + rover)
       .then(res => {
-        console.log(res.body)
         if (res.body.pics.length === 0) {
           dispatch(error('No Pictures Found'))
         } else {
@@ -51,24 +50,3 @@ export function getPics (sol, camera, rover) {
       })
   }
 }
-
-
-// request.get(apiUrl + '/' + sol + '/' + camera)
-// .then(res => {
-//   this.setState({
-//     pics: res.body.pics
-//   })
-// })
-// .then(() => {
-//   if (this.state.pics.length === 0) {
-//     this.setState({
-//       myState: 'No images found',
-//       load: false
-//     })
-//   } else {
-//     this.setState({
-//       myState: 'loading...',
-//       load: true
-//     })
-//   }
-// })
