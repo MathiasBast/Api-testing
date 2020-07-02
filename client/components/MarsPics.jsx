@@ -20,7 +20,7 @@ class MarsPics extends React.Component {
             ? <>
             {!this.props.pending
               ? <div>
-                <p>Max Sol is: {this.props.pics.pics[0].maxSol}</p>
+                {console.log(this.props.pics)}
                 {this.props.pics.pics.map(pic => {
                   return (
                     <div key={pic.id} className='pics-class' >
